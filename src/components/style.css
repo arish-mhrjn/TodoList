@@ -1,0 +1,36 @@
+.child-div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: start; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  height: 80vh;
+  width: 40vw;
+}
+.list {
+  margin-top: 2%;
+  height: 55px;
+  width: 30vw;
+  background-color: rgb(11, 123, 69);
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.7s, color 0.7s;
+}
+.list:hover {
+  background-color: #ffffff;
+  color: black;
+}
+
+.removeItem {
+  margin-top: 5%;
+  color: white;
+}
+
+.removeItem {
+  margin-top: 7%;
+}
+
+.showItems {
+  overflow-y: auto;
+  max-height: 40vh;
+}
