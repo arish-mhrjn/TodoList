@@ -1,21 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden; /* Prevent body scrolling */
+}
+
 .child-div {
   display: flex;
   flex-direction: column;
-  position: relative;
-  justify-content: start; /* Horizontally center */
-  align-items: center; /* Vertically center */
-  height: 80vh;
-  width: 40vw;
+  justify-content: flex-start; /* Start alignment */
+  align-items: center; /* Center items */
+  min-height: 100vh; /* Full viewport height */
+  max-height: 100vh; /* Prevent overflow */
+  padding: 1rem; /* Add some padding for smaller screens */
 }
+
 .list {
   margin-top: 2%;
   height: 55px;
-  width: 30vw;
+  width: 100%; /* Use percentage for width */
+  max-width: 400px; /* Limit max width for larger screens */
   background-color: rgb(11, 123, 69);
   color: white;
   border-radius: 5px;
   transition: background-color 0.7s, color 0.7s;
 }
+
 .list:hover {
   background-color: #ffffff;
   color: black;
@@ -26,11 +35,30 @@
   color: white;
 }
 
-.removeItem {
-  margin-top: 7%;
+.showItems {
+  overflow-y: auto; 
+  max-height: 40vh; /* Limit height */
+  width: 100%; 
+  padding: 0 1rem; 
 }
 
-.showItems {
-  overflow-y: auto;
-  max-height: 40vh;
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .child-div {
+    padding: 0.5rem; 
+  }
+  
+  .list {
+    width: 100%; 
+  }
+}
+
+.todo-btn{
+  display: flex;
+
+}
+
+.noOutline{
+  outline: none !important;
+  box-shadow: none !important;
 }
