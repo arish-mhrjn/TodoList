@@ -1,6 +1,13 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+import { useAuth0 } from "@auth0/auth0-react";
 const NavBar = () => {
+  const { loginWithRedirect } = useAuth0();
+  const { logout } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -28,16 +35,31 @@ const NavBar = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/about">
-                  About
-                </NavLink>
+              <li>
+                {
+                  isAuthenticated && <p>{user.name}</p>
+                }
               </li>
               <li className="nav-item">
+                {/* <NavLink className="nav-link" to="/about">
+                  About
+                </NavLink> */}
+                {(isAuthenticated)?
+                <button
+                  onClick={() =>
+                    logout({
+                      logoutParams: { returnTo: window.location.origin },
+                    })
+                  }>
+                  Log Out
+                </button>
+                : <button onClick={() => loginWithRedirect()}>Log In</button>}
+              </li>
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>
-              </li>
+              </li> */}
               <li className="nav-item dropdown">
                 <NavLink
                   className="nav-link dropdown-toggle"
